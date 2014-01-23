@@ -10,6 +10,10 @@ define :opsworks_nodejs do
     execute "/usr/local/bin/npm install #{npm}" do
       cwd "#{deploy[:deploy_to]}/current"
     end
+
+    execute "/usr/local/bin/npm update #{npm}" do
+      cwd "#{deploy[:deploy_to]}/current"
+    end
   end
 
   template "#{deploy[:deploy_to]}/shared/config/opsworks.js" do
